@@ -1,0 +1,116 @@
+ 
+
+<div class="container">
+<div class="container page">
+  <div>
+  <button type="button" class="btn btn-success"  data-bs-toggle="modal" href="#buyerModel" >Add Entry</button>&nbsp;&nbsp;
+  
+  <button type="button" class="btn btn-danger" data-bs-toggle="modal" href="#sellerModel">Buyer Input</button>
+  </div>
+</div>
+
+
+
+
+<div class="container page" style=" padding-left: 10%;">
+ 
+<table class="table table-bordered" Style="width:70%;  border: solid black 1px;" >
+  <thead>
+    <tr>
+    <th colspan="4" style="text-align: center;">Pending Order Table</th>
+  
+  </tr>   
+    <tr>
+      <th scope="col">Buyer Qty</th>
+      <th scope="col">Buyer Price</th>
+      <th scope="col">Seller Price</th>
+      <th scope="col">Seller Qty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of getBuyerData">
+      <td scope="row">{{item.buyerQty}}</td>
+      <td>{{item.buyerPrice}}</td>
+      <td>{{item.sellerPrice}}</td>
+      <td>{{item.sellerQty}}</td>
+    </tr>
+   
+  </tbody>
+</table>
+</div>
+<div class="container page" style=" padding-left: 10%;">
+ 
+  <table class="table table-bordered" Style="width:70%;  border: solid black 1px;" >
+    <thead>
+      <tr>
+      <th colspan="4" style="text-align: center;">Completed Order Table</th>
+    
+    </tr>   
+      <tr>
+        <th scope="col"> Price</th>
+        <th scope="col"> Qty</th>
+
+ 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of getSellerData"> 
+        <td>{{data.sellerPrice}}</td>
+        <td>{{data.sellerQty}}</td>
+      </tr>
+     
+    </tbody>
+  </table>
+  </div>
+  
+</div>
+
+
+<!-- ////////////////////////////////////////Buyer Model //////////////////////////////////////// -->
+<div class="modal" id="buyerModel" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: green;">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Add Entry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+        <div class="container">
+          <label>Buyer Price</label><br/>
+       <input #price type="text" class="form-control"/><br/>
+        <label>Buyer Qty</label><br/>
+       <input #qty type="text" class="form-control"/><br/>
+          <label>Seller Price</label><br/>
+       <input #sprice type="text" class="form-control"/><br/>
+        <label>Seller Qty</label><br/>
+       <input #sqty type="text" class="form-control"/><br/>
+       
+        </div><br/>
+        <button type="button" class="btn btn-info" (click)="createBuyer(price.value,qty.value,sprice.value,sqty.value)">Save</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ////////////////////////////////////////Seller Model //////////////////////////////////////// -->
+<div class="modal " id="sellerModel" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: crimson;">
+        <h5 class="modal-title" id="exampleModalToggleLabel" >buyer input</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+        <div class="container">
+          <label>Price</label><br/>
+       <input #bprice type="text"  class="form-control"/><br/>
+        <label>Qty</label><br/>
+       <input  #bqty type="number" class="form-control"/><br/>
+       
+        </div><br/>
+        <button type="button" class="btn btn-info" (click)="createSeller(bprice.value,bqty.value)">Save</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
